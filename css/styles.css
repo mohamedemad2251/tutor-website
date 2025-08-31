@@ -26,7 +26,6 @@
 :root {
   --primary-color: #f27373;
   --secondary-color: #ffc05a;
-  --header-height: 5rem;
 }
 
 /* General Styling */
@@ -53,13 +52,16 @@ li {
 
 /* Header Styling */
 header.header {
-  /* background-color: rgba(255, 255, 255, 0); */
-  position: sticky;
+  /* sticky makes the element inside the flow normally. But "fixed" takes it out of the flow. No need for
+  the hustle we've used. */
+  position: fixed;
   top: 0px;
+  left: 0px;
+  right: 0px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: var(--header-height);
+  padding: 2rem;
   z-index: 1;
 }
 
@@ -87,18 +89,13 @@ header.header {
 
 /* Main Section (Hero) Styling */
 section.hero.container-lg {
-  /* Accounting for the lost height portion at header */
-  height: calc(100vh + var(--header-height));
-  /* Shifting the entire section up, making the header cover it up neatly */
-  margin-top: calc(0px - var(--header-height));
-
-  background: url("../images/header-background.jpg") no-repeat center/cover;
+  background: url("../images/header-background.jpg") no-repeat center
+    center/cover;
 }
 
 section.hero {
   .container-sm {
     height: 100vh;
-    /* height: calc(100vh - var(--header-height)); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,4 +124,64 @@ section.hero {
 
 .hero-img {
   flex: 1;
+}
+
+.mobile-menu,
+.mobile-canvas,
+.mobile-menu-list {
+  display: none;
+}
+
+/* Mobile Version (Responsive) */
+@media (max-width: 768px) {
+  /* Don't show Desktop's main menu */
+  .main-menu {
+    display: none;
+  }
+
+  /* Show the hamburg menu icon and style it */
+  .mobile-menu {
+    display: block;
+    i {
+      color: #fff;
+      &:hover {
+        color: var(--secondary-color);
+      }
+    }
+  }
+
+  /* The canvas that opens when you click the hamburg icon */
+  .mobile-canvas {
+    transform: translateX(100%);
+    transition: transform 0.7s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    position: absolute;
+    top: 6.4rem;
+    left: 0;
+    height: calc(100dvh - 6.4rem);
+    width: 100dvw;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    a {
+      color: #fff;
+      &:hover {
+        color: var(--secondary-color);
+      }
+    }
+  }
+
+  .mobile-canvas.active {
+    transform: translateX(0%);
+  }
+
+  .mobile-menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-size: 1.2rem;
+  }
 }
