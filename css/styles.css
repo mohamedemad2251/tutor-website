@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Utility Classes */
+.container-lg {
+  width: 100%;
+}
+
+.container-sm {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.btn {
+  color: #333;
+  background-color: var(--secondary-color);
+  padding: 20px 30px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+/* Utility Variables */
+:root {
+  --primary-color: #f27373;
+  --secondary-color: #ffc05a;
+  --header-height: 5rem;
+}
+
+/* General Styling */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+/* Header Styling */
+header.header {
+  /* background-color: rgba(255, 255, 255, 0); */
+  position: sticky;
+  top: 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: var(--header-height);
+  z-index: 1;
+}
+
+.logo {
+  width: 5rem;
+  height: 100%;
+}
+
+.main-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  a {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+
+    &:hover {
+      color: var(--secondary-color);
+    }
+  }
+}
+
+/* Main Section (Hero) Styling */
+section.hero.container-lg {
+  /* Accounting for the lost height portion at header */
+  height: calc(100vh + var(--header-height));
+  /* Shifting the entire section up, making the header cover it up neatly */
+  margin-top: calc(0px - var(--header-height));
+
+  background: url("../images/header-background.jpg") no-repeat center/cover;
+}
+
+section.hero {
+  .container-sm {
+    height: 100vh;
+    /* height: calc(100vh - var(--header-height)); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+  }
+}
+
+.hero-text {
+  flex: 1;
+  color: white;
+  padding: 0px 0px 50px 0px;
+  h1 {
+    width: 75%;
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  p {
+    line-height: 2;
+    width: 75%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 40px;
+  }
+}
+
+.hero-img {
+  flex: 1;
+}
