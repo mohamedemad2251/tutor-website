@@ -10,7 +10,7 @@
 }
 
 .container-sm {
-  max-width: 1400px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -24,8 +24,10 @@
 }
 /* Utility Variables */
 :root {
-  --primary-color: #f27373;
+  --primary-color: rgb(240, 68, 76);
   --secondary-color: #ffc05a;
+
+  --header-background-color: rgba(240, 68, 76, 0.8);
 }
 
 /* General Styling */
@@ -61,8 +63,12 @@ header.header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 2rem;
+  padding: 1.5rem;
   z-index: 1;
+}
+
+header.header.scroll {
+  background-color: var(--header-background-color);
 }
 
 .logo {
@@ -126,6 +132,217 @@ section.hero {
   flex: 1;
 }
 
+/* Cloud-shaped white area */
+.frame-decoration {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  /* Position it at the absolute bottom */
+  bottom: 0;
+}
+
+/* What Will You Learn? Section Styling */
+section#what-will-you-learn.container-lg {
+  margin-bottom: 150px;
+}
+
+section#what-will-you-learn .container-sm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  width: 60px;
+  background-color: var(--primary-color);
+  height: 3px;
+
+  position: absolute;
+  top: 120%;
+  left: 40%;
+}
+
+.section-paragraph {
+  text-align: center;
+  font-weight: 500;
+  width: 65%;
+  margin-bottom: 50px;
+}
+
+section#what-will-you-learn .learn-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 30px;
+  row-gap: 40px;
+}
+
+.learn-card .card-img {
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.learn-card .card-heading {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+/* Chapters Section */
+section#chapters.container-lg {
+  margin-bottom: 150px;
+}
+section#chapters .container-sm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  gap: 0px;
+}
+
+section#chapters .info-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.info-card {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+}
+
+.info-card.vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 30px;
+}
+
+.info-card .info-img {
+  width: 7rem;
+}
+
+/* Summary Section Styling */
+section#summary.container-lg {
+  background-color: #f4f4f4;
+  padding-top: 5px;
+}
+
+section#summary .container-sm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  gap: 0px;
+}
+
+section#summary .summary-table {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 30px;
+  margin-bottom: 70px;
+}
+
+section#summary .table-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+section#summary .content-heading {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+section#summary ol {
+  counter-reset: item; /* reset counter at top-level */
+  list-style: none; /* remove default bullets/numbers */
+  li {
+    counter-increment: item; /* increment counter for each <li> */
+    margin: 0.3em 0;
+  }
+  /* Here I have to do this so that I don't add it to the headings as well */
+  li ol li::before {
+    content: counters(item, ".") ".";
+  }
+
+  li ol li {
+    position: relative;
+    margin-bottom: 30px;
+    padding-right: 50px;
+  }
+
+  li ol li::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    top: 150%;
+    left: 0%;
+  }
+}
+
+/* Who Is This Course For? Styling */
+section#who-is-this-course-for.container-lg {
+  display: flex;
+  justify-content: end;
+  align-content: center;
+  /* height: 20vh; */
+  min-height: 65vh;
+  background: url("../images/audience.jpg") no-repeat top center/cover;
+}
+
+/* section#who-is-this-course-for .section-img {
+  flex: 1;
+  width: 10rem;
+  height: inherit;
+} */
+
+section#who-is-this-course-for .section-content {
+  background-color: var(--primary-color);
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 85%;
+    color: #fff;
+
+    h2 {
+      font-size: 2rem;
+    }
+    p {
+      font-weight: 500;
+    }
+
+    li i {
+      color: var(--secondary-color);
+    }
+  }
+}
+
+/* Disable Mobile For Desktop */
 .mobile-menu,
 .mobile-canvas,
 .mobile-menu-list {
