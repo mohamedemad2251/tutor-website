@@ -33,6 +33,7 @@
 /* General Styling */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* leaves 100px space from the top when scrolled into view */
 }
 
 body {
@@ -56,6 +57,7 @@ li {
 header.header {
   /* sticky makes the element inside the flow normally. But "fixed" takes it out of the flow. No need for
   the hustle we've used. */
+  transition: background-color 0.4s ease;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -260,7 +262,6 @@ section#summary .summary-table {
 section#summary .table-content {
   display: flex;
   flex-direction: column;
-  gap: 30px;
 }
 
 section#summary .content-heading {
