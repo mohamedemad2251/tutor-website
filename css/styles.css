@@ -369,7 +369,16 @@ section#summary ol {
     position: absolute;
     width: 100%;
     height: 1px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 150%;
+    left: 0%;
+  }
+  li ol li:last-child::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: transparent;
     top: 150%;
     left: 0%;
   }
@@ -597,6 +606,10 @@ footer a {
   color: #fff;
 }
 
+footer a i {
+  font-size: 2rem;
+}
+
 footer .navigation-copyright {
   display: flex;
   align-items: center;
@@ -610,6 +623,28 @@ footer .navigation-copyright {
 footer .footer-menu {
   display: flex;
   gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .container-sm {
+    margin: 60px;
+    margin-bottom: 70px;
+  }
+  section.hero {
+    .container-sm {
+      margin: 0px 60px;
+    }
+  }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+  header.header {
+    flex-direction: column;
+  }
+  section#takeaways .info-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
 }
 
 /* Mobile Version (Responsive) */
@@ -640,7 +675,7 @@ footer .footer-menu {
     flex-direction: column;
     gap: 50px;
     position: absolute;
-    top: 6.4rem;
+    top: 5.4rem;
     left: 0;
     height: calc(100dvh - 6.4rem);
     width: 100dvw;
@@ -663,5 +698,180 @@ footer .footer-menu {
     flex-direction: column;
     gap: 40px;
     font-size: 1.2rem;
+  }
+
+  /* Main Section (Hero) Styling */
+  section.hero {
+    .container-sm {
+      text-align: center;
+      padding-top: 6rem;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 00px;
+    }
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 0;
+    h1 {
+      font-size: 1.7rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .hero-img {
+    flex: 1;
+    width: 300px;
+  }
+
+  section.hero a {
+    padding: 20px;
+    font-size: 1.1rem;
+  }
+
+  /* What Will You Learn? Section Styling */
+  section#what-will-you-learn .learn-card-grid {
+    padding: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    column-gap: 15px;
+    row-gap: 20px;
+  }
+
+  .learn-card .card-heading {
+    font-size: 0.8rem;
+  }
+
+  /* Chapters Section */
+  /* section#chapters.container-lg {
+    margin-bottom: 150px;
+  } */
+
+  /* section#chapters .container-sm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+  } */
+
+  section#chapters .info-card-grid {
+    padding: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  /* Summary Section Styling */
+  section#summary ol {
+    li ol li {
+      position: relative;
+      padding-right: 0px;
+    }
+
+    li ol li::after {
+      content: "";
+      top: 115%;
+      left: 0%;
+    }
+  }
+  section#summary .summary-table {
+    margin: 15px;
+  }
+
+  /* Takeaways Section Styling */
+  section#takeaways .info-card-grid {
+    padding: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+  }
+
+  section#takeaways .info-card.horizontal {
+    justify-content: start;
+  }
+
+  /* Details & Author Styling */
+  .container-sm.horizontal.right,
+  .container-sm.horizontal.left {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .container-sm.horizontal .section-img {
+    width: 100%;
+  }
+  .container-sm.horizontal {
+    padding: 20px;
+  }
+
+  /* Stats Banner Section Styling */
+  section#stats-banner .container-sm {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  /* Footer Styling */
+  footer h4 {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  footer a i {
+    font-size: 2rem;
+  }
+
+  footer .navigation-copyright {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 725px) {
+  section#who-is-this-course-for .section-content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  section#stats-banner .stats-numbers-flex {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 430px) {
+  .container-sm {
+    margin: 0;
+  }
+  .container-sm.horizontal .section-title {
+    font-size: 1.4rem;
+  }
+  .container-sm.horizontal .section-paragraph {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  section#newsletter .newsletter-form {
+    input[name="email"] {
+      width: 300px;
+    }
+  }
+  footer a i {
+    font-size: 1.5rem;
   }
 }

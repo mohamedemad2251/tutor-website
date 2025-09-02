@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     mobile_menu_toggle.addEventListener('click', function () {
         mobile_canvas.classList.toggle('active');
+
+        const list = document.querySelector('.mobile-menu-list');
+        console.log(list);
+        list.addEventListener('click', function () {
+            mobile_canvas.classList.remove('active');
+        })
     })
 
     document.addEventListener('scroll', function () {
