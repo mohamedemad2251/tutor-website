@@ -1,10 +1,27 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 /* Utility Classes */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  outline-offset: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .container-lg {
   width: 100%;
 }
@@ -12,15 +29,94 @@
 .container-sm {
   max-width: 1100px;
   margin: 0 auto;
+  margin-bottom: 70px;
+}
+
+/* Vertical sections (with title and paragraph/description) */
+.container-sm.vertical .section-title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.container-sm.vertical .section-title::after {
+  content: "";
+  width: 60px;
+  background-color: var(--primary-color);
+  height: 3px;
+
+  position: absolute;
+  top: 120%;
+  left: 40%;
+}
+
+.container-sm.vertical .section-paragraph {
+  text-align: center;
+  font-weight: 500;
+  width: 65%;
+  margin-bottom: 50px;
+}
+
+/* Horizontal sections (with image, title and paragraph/description) */
+.container-sm.horizontal .section-title {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.container-sm.horizontal {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.container-sm.horizontal.left {
+  flex-direction: row;
+}
+.container-sm.horizontal.right {
+  flex-direction: row-reverse;
+  justify-content: end;
+}
+
+.container-sm.horizontal .section-img {
+  width: 7rem;
+  flex: 1;
+}
+
+.container-sm.horizontal .section-content {
+  flex: 1;
+}
+
+.container-sm.horizontal .section-title::after {
+  content: "";
+  width: 60px;
+  background-color: var(--primary-color);
+  height: 3px;
+
+  position: absolute;
+  top: 120%;
+  left: 0%;
+}
+
+.container-sm.horizontal .section-paragraph {
+  font-weight: 500;
+  /* width: 65%; */
+  margin-bottom: 50px;
 }
 
 .btn {
+  transition: all 0.3s ease;
   color: #333;
   background-color: var(--secondary-color);
   padding: 20px 30px;
   border-radius: 30px;
   font-size: 1.2rem;
   font-weight: 500;
+  &:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
 }
 /* Utility Variables */
 :root {
@@ -34,6 +130,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px; /* leaves 100px space from the top when scrolled into view */
+  overflow-x: hidden;
 }
 
 body {
@@ -47,6 +144,9 @@ img {
 
 a {
   text-decoration: none;
+  &:hover {
+    color: var(--secondary-color);
+  }
 }
 
 li {
@@ -116,14 +216,12 @@ section.hero {
   color: white;
   padding: 0px 0px 50px 0px;
   h1 {
-    width: 75%;
     font-size: 4rem;
     line-height: 1.2;
     margin-bottom: 20px;
   }
   p {
     line-height: 2;
-    width: 75%;
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 40px;
@@ -131,6 +229,7 @@ section.hero {
 }
 
 .hero-img {
+  /* min-width: 0; */
   flex: 1;
 }
 
@@ -154,31 +253,6 @@ section#what-will-you-learn .container-sm {
   justify-content: center;
   align-items: center;
   gap: 0px;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 30px;
-  position: relative;
-}
-
-.section-title::after {
-  content: "";
-  width: 60px;
-  background-color: var(--primary-color);
-  height: 3px;
-
-  position: absolute;
-  top: 120%;
-  left: 40%;
-}
-
-.section-paragraph {
-  text-align: center;
-  font-weight: 500;
-  width: 65%;
-  margin-bottom: 50px;
 }
 
 section#what-will-you-learn .learn-card-grid {
@@ -209,7 +283,7 @@ section#chapters .container-sm {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 70px;
+  /* margin-top: 70px; */
   gap: 0px;
 }
 
@@ -249,6 +323,7 @@ section#summary .container-sm {
   justify-content: center;
   align-items: center;
   margin-top: 70px;
+  margin-bottom: 0;
   gap: 0px;
 }
 
@@ -310,12 +385,6 @@ section#who-is-this-course-for.container-lg {
   background: url("../images/audience.jpg") no-repeat top center/cover;
 }
 
-/* section#who-is-this-course-for .section-img {
-  flex: 1;
-  width: 10rem;
-  height: inherit;
-} */
-
 section#who-is-this-course-for .section-content {
   background-color: var(--primary-color);
   width: 50%;
@@ -343,11 +412,204 @@ section#who-is-this-course-for .section-content {
   }
 }
 
+/* Takeaways Section */
+section#takeaways.container-lg {
+  margin-bottom: 150px;
+}
+section#takeaways .container-sm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  gap: 0px;
+}
+
+section#takeaways .info-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.info-card.horizontal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 25px;
+}
+
+.info-card.horizontal .info-img {
+  color: var(--primary-color);
+}
+
+/* Author Section Styling */
+section#author ul {
+  margin-bottom: 70px;
+  position: relative;
+}
+
+section#author li {
+  margin-bottom: 5px;
+
+  i {
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 200%;
+    padding: 2px 2px;
+    /* margin: 10px auto; */
+  }
+}
+
+/* Stats Banner Section Styling */
+section#stats-banner.container-lg {
+  background: url("../images/stats-background.jpg") center/cover no-repeat;
+}
+
+section#stats-banner .container-sm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+section#stats-banner .stats-img {
+  flex: 1;
+  /* Allow shrinking, this line is important because an image doesn't allow shrinking below its intrinsic width. This overrides it. */
+  min-width: 0;
+  /* background-color: #333; */
+}
+
+section#stats-banner .stats-content {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  gap: 30px;
+
+  /* background-color: #ccc; */
+}
+
+section#stats-banner .stats-numbers-flex {
+  display: flex;
+  gap: 20px;
+}
+
+section#stats-banner .stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* flex: 1; */
+}
+
+section#stats-banner .stat .value {
+  font-size: 3rem;
+}
+
+section#stats-banner .btn {
+  text-align: center;
+  width: 200px;
+}
+
+/* Newsletter Section Styling */
+section#newsletter .container-sm {
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px;
+}
+
+section#newsletter .section-title::after {
+  display: none;
+}
+
+section#newsletter .newsletter-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  gap: 20px;
+  input[name="email"] {
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 350px;
+  }
+
+  .btn {
+    border: none;
+    width: 170px;
+    text-align: center;
+  }
+}
+
 /* Disable Mobile For Desktop */
 .mobile-menu,
 .mobile-canvas,
 .mobile-menu-list {
   display: none;
+}
+
+/* Footer Styling */
+footer.container-lg {
+  color: #fff;
+  background-color: #2b2b31;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  height: 400px;
+}
+
+footer .social {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+footer h4 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+footer .social-flex-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer .navigation-copyright {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: space-around;
+  margin: 0;
+  border-top: 1px solid rgba(204, 204, 204, 0.3);
+  padding: 10px 0;
+}
+
+footer .footer-menu {
+  display: flex;
+  gap: 20px;
 }
 
 /* Mobile Version (Responsive) */
