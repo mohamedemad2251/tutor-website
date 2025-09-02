@@ -675,7 +675,7 @@ footer .footer-menu {
     flex-direction: column;
     gap: 50px;
     position: absolute;
-    top: 5.4rem;
+    top: 100%;
     left: 0;
     height: calc(100dvh - 6.4rem);
     width: 100dvw;
