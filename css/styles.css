@@ -197,6 +197,7 @@ header.header.scroll {
 
 /* Main Section (Hero) Styling */
 section.hero.container-lg {
+  position: relative;
   background: url("../images/header-background.jpg") no-repeat center
     center/cover;
   height: 100vh;
