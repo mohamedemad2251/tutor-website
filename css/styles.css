@@ -691,6 +691,10 @@ footer .footer-menu {
     margin: 60px;
     margin-bottom: 70px;
   }
+
+  section#what-will-you-learn .container-sm {
+    margin-top: 0;
+  }
   section.hero {
     .container-sm {
       margin: 0px 60px;
