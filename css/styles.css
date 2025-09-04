@@ -787,7 +787,7 @@ footer .footer-menu {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 00px;
+      gap: 15px;
     }
   }
 
@@ -814,6 +814,11 @@ footer .footer-menu {
   section.hero a {
     padding: 20px;
     font-size: 1.1rem;
+  }
+
+  /* Cloud-shaped white area */
+  .frame-decoration {
+    height: 50px;
   }
 
   /* What Will You Learn? Section Styling */
